@@ -12,7 +12,7 @@ import { DbService } from 'src/db/db.service';
     JwtModule.register({
       global: true,
       secret: 'jwtConstants.secret',
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '6000000s' },
     }),]
 })
 export class AuthModule {}
