@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    container_name: logger
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=adminpassword
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=logger-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  
+volumes:
+  postgres_data:
