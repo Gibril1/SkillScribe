@@ -10,15 +10,13 @@ export class OrgsController {
     @Get()
     findAll(@Request() req){
         // this route returns all orgs that belong to the logged in user
-        const userId:string = req.user.id
-        return this.orgsService.findAll(userId)
+        return this.orgsService.findAll(req.user.id)
     }
 
     @UseGuards(AuthGuard)
     @Post()
     create(@Body(new ValidationPipe()) createOrgsDto:CreateOrgsDto, @Request() req){
-        const userId:string = req.user.id
-        return this.orgsService.create(createOrgsDto, userId)
+        return this.orgsService.create(createOrgsDto, req.user.id)
     }
 
     @UseGuards(AuthGuard)
@@ -30,14 +28,12 @@ export class OrgsController {
     @UseGuards(AuthGuard)
     @Put(':id')
     update(@Param('id') id:string, @Body(new ValidationPipe()) createOrgsDto:CreateOrgsDto, @Request() req){
-        const userId:string = req.user.id
-        return this.orgsService.update(id, createOrgsDto, userId)
+        return this.orgsService.update(id, createOrgsDto, req.user.id)
     }
 
     @UseGuards(AuthGuard)
     @Delete(':id')
     delete(@Param('id') id:string, @Request() req){
-        const userId:string = req.user.id
-        return this.orgsService.delete(id, userId)
+        return this.orgsService.delete(id, req.user.id)
     }
 }
